@@ -1,12 +1,73 @@
 ﻿<Window x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow"
+        Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles.xaml" />
+    </Window.Resources>
 
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="Авторизация"
+                   Style="{StaticResource StyleHeader}" />
+        <StackPanel>
+            <StackPanel Style="{StaticResource StyleStackPanelHorizontalCenter}">
+                <Label Content="Логин"
+                       Target="InputLogin"
+                       Style="{StaticResource StyleLabel}" />
+                <TextBox x:Name="InputLogin"
+                         Style="{StaticResource StyleInput}" />
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource StyleStackPanelHorizontalCenter}">
+                <Label Content="Пароль"
+                       Target="InputPassword"
+                       Style="{StaticResource StyleLabel}" />
+                <TextBox x:Name="InputPassword"
+                         Style="{StaticResource StyleInput}"/>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource StyleStackPanelHorizontalCenter}">
+                <Button x:Name="ButtonAuth"
+                        Content="Войти"
+                        Template="{StaticResource ButtonTemplate}"
+                        Click="ButtonAuth_OnClick">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}"
+                               BasedOn="{StaticResource StyleButtonAuth}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=InputLogin, Path=Text}" Value="">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=InputPassword, Path=Text}" Value="">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="ButtonClear"
+                        Content="Очистить"
+                        Template="{StaticResource ButtonTemplate}"
+                        Click="ButtonClear_OnClick">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Button}"
+                               BasedOn="{StaticResource StyleButtonClear}">
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=InputLogin, Path=Text}" Value="" />
+                                        <Condition Binding="{Binding ElementName=InputPassword, Path=Text}" Value="" />
+                                    </MultiDataTrigger.Conditions>
+                                    <MultiDataTrigger.Setters>
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </MultiDataTrigger.Setters>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </Window>
