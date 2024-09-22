@@ -38,6 +38,9 @@ public partial class MainWindow : Window
         
         MessageBoxShow("Авторизация прошла успешно");
         ClearInputs();
+        
+        new AccountsWindow().Show();
+        this.Close();
     }
 
     private void ButtonClear_OnClick(object sender, RoutedEventArgs e)

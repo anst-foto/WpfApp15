@@ -3,10 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow"
         Height="450" Width="800">
-    <Window.Resources>
-        <ResourceDictionary Source="Styles.xaml" />
-    </Window.Resources>
-
     <StackPanel>
         <TextBlock Text="Авторизация"
                    Style="{StaticResource StyleHeader}" />
