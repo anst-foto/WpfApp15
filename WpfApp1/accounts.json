@@ -1,0 +1,20 @@
+﻿[
+  {
+    "id": "23563218-5ede-4021-9e6f-02531fc66e1c",
+    "login": "admin",
+    "password": "admin",
+    "role": "admin"
+  },
+  {
+    "id": "78ca0f3e-8d8d-49e3-bbbf-63697f7cfc11",
+    "login": "user",
+    "password": "12345",
+    "role": "user"
+  },
+  {
+    "id": "23e48f2f-8a20-429f-a630-3f01bb3df3a8",
+    "login": "guest",
+    "password": "1",
+    "role": "unknown"
+  }
+]
